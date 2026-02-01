@@ -1,0 +1,821 @@
+/* ===== CSS Custom Properties ===== */
+:root {
+    --color-bg: #FDF8F3;
+    --color-bg-alt: #F7F2EC;
+    --color-text: #4A4A4A;
+    --color-text-light: #7A7A7A;
+    --color-lavender: #E8E0F0;
+    --color-lavender-deep: #C9B8D9;
+    --color-sage: #D4E5D7;
+    --color-sage-deep: #A8C9AE;
+    --color-peach: #FFE5D9;
+    --color-peach-deep: #FFCBB8;
+    --color-soft-blue: #D4E5F7;
+    --color-soft-pink: #F7D4E5;
+    --color-cream: #FFF9F0;
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
+    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.1);
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 28px;
+    --radius-full: 50%;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-handwritten: 'Caveat', cursive;
+}
+
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--color-text);
+    background: var(--color-bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===== Container ===== */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ===== Typography ===== */
+h1,
+h2,
+h3 {
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-light);
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+/* ===== Sections ===== */
+section {
+    padding: 60px 0;
+}
+
+section:nth-child(even) {
+    background: var(--color-bg-alt);
+}
+
+/* ===== Welcome Section ===== */
+.welcome {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(180deg, var(--color-lavender) 0%, var(--color-bg) 100%);
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--color-text);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.welcome-text {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: 8px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.welcome-subtext {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    animation: fadeInUp 1.2s ease-out;
+}
+
+.welcome-divider {
+    width: 60px;
+    height: 3px;
+    background: var(--color-lavender-deep);
+    border-radius: 2px;
+    margin: 40px auto 0;
+    animation: fadeInUp 1.4s ease-out;
+}
+
+/* ===== Mood Selection ===== */
+.mood-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.mood-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: var(--color-cream);
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    min-height: 100px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mood-btn:hover,
+.mood-btn:focus {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-lavender-deep);
+}
+
+.mood-btn:active {
+    transform: translateY(0);
+}
+
+.mood-emoji {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.mood-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+/* Sad Button Special Styling */
+.sad-btn {
+    background: linear-gradient(135deg, var(--color-soft-blue) 0%, var(--color-soft-pink) 100%);
+    position: relative;
+    transition: transform 0.2s ease-out;
+}
+
+.sad-btn.escaping {
+    pointer-events: none;
+}
+
+/* ===== Response Panel ===== */
+.response-section {
+    display: none;
+    padding: 40px 0;
+}
+
+.response-section.active {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.response-panel {
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    padding: 32px 24px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    position: relative;
+}
+
+.response-gif {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto 24px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--color-lavender) 0%, var(--color-sage) 100%);
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.response-gif img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.response-message {
+    font-size: 1.15rem;
+    color: var(--color-text);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.response-quote {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--color-text-light);
+    margin-bottom: 16px;
+    line-height: 1.5;
+    padding: 12px 16px;
+    background: var(--color-lavender);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--color-lavender-deep);
+}
+
+.response-action {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    background: var(--color-sage);
+    border-radius: var(--radius-sm);
+}
+
+.action-label {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    font-weight: 500;
+}
+
+.action-text {
+    font-size: 1rem;
+    color: var(--color-text);
+    font-weight: 500;
+}
+
+.close-response {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--color-text-light);
+    transition: var(--transition-smooth);
+}
+
+.close-response:hover {
+    background: var(--color-lavender);
+}
+
+/* ===== Affirmation Section ===== */
+.affirmation-card {
+    background: linear-gradient(135deg, var(--color-lavender) 0%, var(--color-soft-pink) 100%);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: var(--shadow-soft);
+}
+
+.affirmation-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.affirmation-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.affirmation-text {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-text);
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
+
+.affirmation-tap {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    opacity: 0.7;
+}
+
+/* ===== Self-Care Section ===== */
+.selfcare-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.selfcare-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+    background: var(--color-cream);
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.selfcare-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-sage-deep);
+}
+
+.selfcare-btn.completed {
+    background: var(--color-sage);
+    border-color: var(--color-sage-deep);
+}
+
+.selfcare-btn.completed .selfcare-icon {
+    color: var(--color-sage-deep);
+    font-weight: 700;
+}
+
+.selfcare-icon {
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+}
+
+.selfcare-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.selfcare-progress {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    margin-top: 8px;
+}
+
+@media (min-width: 480px) {
+    .selfcare-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ===== Timer Cards ===== */
+.timer-card {
+    background: var(--color-cream);
+    border-radius: var(--radius-lg);
+    padding: 40px 24px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+}
+
+/* Study Timer Circle */
+.timer-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 32px;
+}
+
+.timer-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.timer-bg {
+    fill: none;
+    stroke: var(--color-lavender);
+    stroke-width: 8;
+}
+
+.timer-progress {
+    fill: none;
+    stroke: var(--color-lavender-deep);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 565.48;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.timer-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.timer-time {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.timer-phase {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: 4px;
+}
+
+/* Timer Controls */
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.timer-btn {
+    padding: 14px 28px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    background: var(--color-lavender);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    min-width: 90px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.timer-btn:hover:not(:disabled) {
+    background: var(--color-lavender-deep);
+}
+
+.timer-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.timer-btn.breathing-start {
+    background: var(--color-sage);
+}
+
+.timer-btn.breathing-start:hover {
+    background: var(--color-sage-deep);
+}
+
+/* Timer Presets */
+.timer-presets {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.preset-btn {
+    padding: 10px 18px;
+    font-family: var(--font-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-light);
+    background: var(--color-bg-alt);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.preset-btn:hover,
+.preset-btn.active {
+    background: var(--color-lavender);
+    color: var(--color-text);
+}
+
+/* ===== Breathing Section ===== */
+.breathing-card {
+    background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-soft-blue) 100%);
+}
+
+.breathing-circle {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 32px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 4s ease-in-out;
+}
+
+.breathing-circle.inhale {
+    transform: scale(1.3);
+}
+
+.breathing-circle.hold {
+    transform: scale(1.3);
+}
+
+.breathing-circle.exhale {
+    transform: scale(1);
+}
+
+.breathing-inner {
+    text-align: center;
+}
+
+.breathing-text {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.breathing-counter {
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-top: 8px;
+}
+
+.breathing-guide {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: 20px;
+}
+
+/* ===== Emergency Section ===== */
+.emergency-section {
+    text-align: center;
+    padding: 80px 0;
+}
+
+.emergency-intro {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: 24px;
+}
+
+.emergency-btn {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 32px 48px;
+    background: linear-gradient(135deg, var(--color-peach) 0%, var(--color-soft-pink) 100%);
+    border: none;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.emergency-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.emergency-icon {
+    font-size: 2.5rem;
+}
+
+.emergency-label {
+    font-family: var(--font-main);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+/* ===== Emergency Overlay ===== */
+.emergency-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(253, 248, 243, 0.98);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 24px;
+}
+
+.emergency-overlay.active {
+    display: flex;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.emergency-content {
+    text-align: center;
+    max-width: 400px;
+}
+
+.emergency-gif {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto 24px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.emergency-gif img {
+    width: 100%;
+    height: auto;
+}
+
+.emergency-message {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 32px;
+}
+
+.emergency-breathing {
+    margin-bottom: 40px;
+}
+
+.emergency-breath-circle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border-radius: var(--radius-full);
+    background: var(--color-sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    animation: emergencyBreathe 19s ease-in-out infinite;
+}
+
+.emergency-close {
+    padding: 16px 32px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    background: var(--color-lavender);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.emergency-close:hover {
+    background: var(--color-lavender-deep);
+}
+
+/* ===== Footer ===== */
+.footer {
+    padding: 60px 0;
+    text-align: center;
+    background: var(--color-lavender);
+}
+
+.footer-message {
+    font-family: var(--font-handwritten);
+    font-size: 1.75rem;
+    color: var(--color-text);
+    margin-bottom: 12px;
+}
+
+.footer-note {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes emergencyBreathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    21% {
+        transform: scale(1.4);
+    }
+
+    /* 4s inhale */
+    58% {
+        transform: scale(1.4);
+    }
+
+    /* 7s hold */
+    100% {
+        transform: scale(1);
+    }
+
+    /* 8s exhale */
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .breathing-circle {
+        transition: none;
+    }
+}
+
+/* ===== Responsive ===== */
+@media (min-width: 480px) {
+    .mood-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .welcome-title {
+        font-size: 3rem;
+    }
+
+    .timer-circle {
+        width: 240px;
+        height: 240px;
+    }
+}
+
+/* ===== Sad Toast Message ===== */
+.sad-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: linear-gradient(135deg, var(--color-lavender-deep) 0%, var(--color-soft-pink) 100%);
+    color: var(--color-text);
+    padding: 16px 28px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-hover);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 90%;
+}
+
+.sad-toast.visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A calming study companion that prioritizes your emotional wellbeing">
+  <title>Mood Relaxer — You Are Okay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Welcome Section -->
+  <section class="welcome" id="welcome">
+    <div class="container">
+      <h1 class="welcome-title">Hey, you.</h1>
+      <p class="welcome-text">Before anything else — take a breath.</p>
+      <p class="welcome-subtext">You're doing better than you think.</p>
+      <div class="welcome-divider"></div>
+    </div>
+  </section>
+
+  <!-- Mood Selection -->
+  <section class="mood-section" id="mood-section">
+    <div class="container">
+      <h2 class="section-title">How are you feeling right now?</h2>
+      <p class="section-subtitle">No judgment. Just honesty.</p>
+      <div class="mood-grid">
+        <button class="mood-btn" data-mood="happy">
+          <span class="mood-emoji">😊</span>
+          <span class="mood-label">Happy</span>
+        </button>
+        <button class="mood-btn" data-mood="anxious">
+          <span class="mood-emoji">😰</span>
+          <span class="mood-label">Anxious</span>
+        </button>
+        <button class="mood-btn" data-mood="tired">
+          <span class="mood-emoji">😴</span>
+          <span class="mood-label">Tired</span>
+        </button>
+        <button class="mood-btn" data-mood="overwhelmed">
+          <span class="mood-emoji">😵‍💫</span>
+          <span class="mood-label">Overwhelmed</span>
+        </button>
+        <button class="mood-btn" data-mood="focused">
+          <span class="mood-emoji">🎯</span>
+          <span class="mood-label">Focused</span>
+        </button>
+        <button class="mood-btn sad-btn" data-mood="sad" id="sad-btn">
+          <span class="mood-emoji">😢</span>
+          <span class="mood-label">Sad</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mood Response Panel -->
+  <section class="response-section" id="response-section">
+    <div class="container">
+      <div class="response-panel" id="response-panel">
+        <div class="response-gif">
+          <img src="" alt="Comforting visual" id="response-gif-img">
+        </div>
+        <p class="response-quote" id="response-quote"></p>
+        <p class="response-message" id="response-message"></p>
+        <div class="response-action" id="response-action">
+          <span class="action-label">Try this:</span>
+          <span class="action-text" id="action-text"></span>
+        </div>
+        <button class="close-response" id="close-response">✕</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Affirmation -->
+  <section class="affirmation-section" id="affirmation-section">
+    <div class="container">
+      <h2 class="section-title">Today's Affirmation</h2>
+      <p class="section-subtitle">Read it. Believe it. Repeat it.</p>
+      <div class="affirmation-card" id="affirmation-card">
+        <span class="affirmation-icon" id="affirmation-icon">💜</span>
+        <p class="affirmation-text" id="affirmation-text">I am worthy of love and respect.</p>
+        <span class="affirmation-tap">Tap for another</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Self-Care -->
+  <section class="selfcare-section" id="selfcare-section">
+    <div class="container">
+      <h2 class="section-title">Quick Self-Care Check</h2>
+      <p class="section-subtitle">Small actions, big impact. Tap when done!</p>
+      <div class="selfcare-grid">
+        <button class="selfcare-btn" data-action="0">
+          <span class="selfcare-icon">💧</span>
+          <span class="selfcare-label">Drink Water</span>
+        </button>
+        <button class="selfcare-btn" data-action="1">
+          <span class="selfcare-icon">🌬️</span>
+          <span class="selfcare-label">Deep Breath</span>
+        </button>
+        <button class="selfcare-btn" data-action="2">
+          <span class="selfcare-icon">🚶</span>
+          <span class="selfcare-label">Stand Up</span>
+        </button>
+        <button class="selfcare-btn" data-action="3">
+          <span class="selfcare-icon">📱</span>
+          <span class="selfcare-label">Screen Break</span>
+        </button>
+        <button class="selfcare-btn" data-action="4">
+          <span class="selfcare-icon">😊</span>
+          <span class="selfcare-label">Smile</span>
+        </button>
+        <button class="selfcare-btn" data-action="5">
+          <span class="selfcare-icon">🙏</span>
+          <span class="selfcare-label">Gratitude</span>
+        </button>
+      </div>
+      <p class="selfcare-progress" id="selfcare-progress"></p>
+    </div>
+  </section>
+
+  <!-- Study Timer -->
+  <section class="timer-section" id="study-timer-section">
+    <div class="container">
+      <h2 class="section-title">Ready to focus?</h2>
+      <p class="section-subtitle">Gentle Pomodoro. No alarms. No pressure.</p>
+      <div class="timer-card study-timer-card">
+        <div class="timer-circle" id="study-timer-circle">
+          <svg class="timer-svg" viewBox="0 0 200 200">
+            <circle class="timer-bg" cx="100" cy="100" r="90"/>
+            <circle class="timer-progress" id="study-progress" cx="100" cy="100" r="90"/>
+          </svg>
+          <div class="timer-display">
+            <span class="timer-time" id="study-time">25:00</span>
+            <span class="timer-phase" id="study-phase">Focus Time</span>
+          </div>
+        </div>
+        <div class="timer-controls">
+          <button class="timer-btn" id="study-start">Start</button>
+          <button class="timer-btn" id="study-pause" disabled>Pause</button>
+          <button class="timer-btn" id="study-reset">Reset</button>
+        </div>
+        <div class="timer-presets">
+          <button class="preset-btn active" data-minutes="25">25 min</button>
+          <button class="preset-btn" data-minutes="15">15 min</button>
+          <button class="preset-btn" data-minutes="45">45 min</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Breathing Timer -->
+  <section class="timer-section breathing-section" id="breathing-section">
+    <div class="container">
+      <h2 class="section-title">Need to breathe?</h2>
+      <p class="section-subtitle">4-7-8 technique. Clinically proven to calm.</p>
+      <div class="timer-card breathing-card">
+        <div class="breathing-circle" id="breathing-circle">
+          <div class="breathing-inner">
+            <span class="breathing-text" id="breathing-text">Ready</span>
+            <span class="breathing-counter" id="breathing-counter"></span>
+          </div>
+        </div>
+        <div class="timer-controls">
+          <button class="timer-btn breathing-start" id="breathing-start">Begin</button>
+          <button class="timer-btn" id="breathing-stop" disabled>Stop</button>
+        </div>
+        <p class="breathing-guide">Inhale 4s → Hold 7s → Exhale 8s</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Emergency Calm Button -->
+  <section class="emergency-section" id="emergency-section">
+    <div class="container">
+      <p class="emergency-intro">Feeling overwhelmed right now?</p>
+      <button class="emergency-btn" id="emergency-btn">
+        <span class="emergency-icon">🫂</span>
+        <span class="emergency-label">I need calm now</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Emergency Calm Overlay -->
+  <div class="emergency-overlay" id="emergency-overlay">
+    <div class="emergency-content">
+      <div class="emergency-gif">
+        <img src="images/calm_emergency_1769930824102.png" alt="Calming visual">
+      </div>
+      <p class="emergency-message">You are safe. This will pass.</p>
+      <div class="emergency-breathing">
+        <div class="emergency-breath-circle" id="emergency-breath-circle">
+          <span id="emergency-breath-text">Breathe</span>
+        </div>
+      </div>
+      <button class="emergency-close" id="emergency-close">I'm feeling better</button>
+    </div>
+  </div>
+
+  <!-- Personal Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <p class="footer-message">Made with care, because you matter. 💜</p>
+      <p class="footer-note">Remember: It's okay to not be okay sometimes.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
